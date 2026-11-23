@@ -1,288 +1,172 @@
-<!doctype html>
-<html lang="en">
-<head>
-<meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<title>MindwareOS | An OS that respects your intelligence</title>
-<meta name="description" content="MindwareOS is an Arch Linux based distribution with a single, readable, one-file installer. Download the script and learn how to use it.">
-<meta name="theme-color" content="#0a0a0f">
-<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect width='100' height='100' fill='%230a0a0f'/><text x='50' y='68' font-size='56' text-anchor='middle' fill='%23fcee0a' font-family='monospace' font-weight='bold'>MW</text></svg>">
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@500;700;900&family=Rajdhani:wght@400;500;600;700&family=Share+Tech+Mono&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="style.css">
-</head>
-<body>
 
-<div id="boot" aria-hidden="true"><pre id="boot-log"></pre></div>
-
-<header class="nav" id="nav">
-  <a class="brand" href="#top"><span class="brand-mark">MW</span><span class="brand-t">MINDWARE<b>OS</b></span></a>
-  <button class="burger" id="burger" aria-label="Menu" aria-expanded="false"><i></i><i></i><i></i></button>
-  <nav id="menu">
-    <a href="#about">About</a>
-    <div class="dd"><a href="#how" class="dd-t">System <span>&#9662;</span></a>
-      <div class="dd-m"><a href="#how">How it works</a><a href="#features">Features</a><a href="#mind">The mind CLI</a></div></div>
-    <a href="#use">How to use</a>
-    <a href="#privacy">Privacy</a>
-    <a href="https://github.com/Kterone/MindwareOS" target="_blank" rel="noopener">GitHub</a>
-    <a class="btn btn-sm btn-primary" href="#get">Download</a>
-  </nav>
-</header>
-
-<main id="top">
-
-<section class="hero">
-  <div class="streaks" aria-hidden="true">
-    <i style="top:14%;--l:-6%;--w:52%;--d:5.5s;--dl:0s;height:3px"></i>
-    <i style="top:22%;--l:40%;--w:60%;--d:7s;--dl:1.2s;height:2px"></i>
-    <i style="top:31%;--l:-10%;--w:34%;--d:4.6s;--dl:.6s;height:1px;--sc:#fff"></i>
-    <i style="top:47%;--l:55%;--w:48%;--d:6s;--dl:2.1s;height:4px"></i>
-    <i style="top:58%;--l:-4%;--w:44%;--d:8s;--dl:.3s;height:2px"></i>
-    <i style="top:66%;--l:30%;--w:70%;--d:5s;--dl:1.7s;height:1px;--sc:#fcee09"></i>
-    <i style="top:74%;--l:62%;--w:40%;--d:6.4s;--dl:.9s;height:3px"></i>
-    <i style="top:84%;--l:-8%;--w:58%;--d:7.4s;--dl:2.6s;height:2px"></i>
-    <i style="top:91%;--l:20%;--w:50%;--d:4.2s;--dl:1.4s;height:1px"></i>
-  </div>
-  <div class="hero-grid">
-    <figure class="portrait">
-      <div class="p-back"></div>
-      <div class="p-frame">
-        <img class="p-img" src="hero.jpg" alt="Portrait with headphones, lit by diagonal beams of light" width="648" height="824">
-        <img class="p-ghost g1" src="hero.jpg" alt="" aria-hidden="true">
-        <img class="p-ghost g2" src="hero.jpg" alt="" aria-hidden="true">
-        <span class="p-tint"></span>
-        <span class="p-lines"></span>
-        <span class="p-tag">/// MINDWARE.OPERATOR</span>
-        <span class="p-live"><i></i> ONLINE</span>
-        <span class="p-br tl"></span><span class="p-br tr"></span><span class="p-br bl"></span><span class="p-br brr"></span>
-      </div>
-      <figcaption class="p-cap"><span>ID 0001</span><span>SIGNAL 100%</span></figcaption>
-    </figure>
-
-    <div class="hero-in">
-      <p class="slash">/// ARCH-BASED &middot; v1.0.0 &middot; BUILT FOR THINKERS</p>
-      <h1 class="glitch" data-text="INSTALL THE MINDSET">INSTALL THE<br><span>MINDSET</span></h1>
-      <p class="sub">MindwareOS is a custom Arch Linux distribution with a single, readable installer script. Partitioning, drivers, desktop and branding, all in one file you can audit.</p>
-      <div class="cta">
-        <button class="btn btn-primary" id="dl-btn" type="button">Download install.sh <i class="arr">&rarr;</i></button>
-        <a class="btn" href="#use">How to use <i class="arr">&rarr;</i></a>
-      </div>
-      <p class="note" id="dl-note" role="status"></p>
-      <ul class="chips" aria-label="Supported">
-        <li>UEFI</li><li>BIOS</li><li>EXT4</li><li>BTRFS</li><li>KDE</li><li>GNOME</li><li>XFCE</li><li>I3WM</li><li>HYPRLAND</li><li>MATE</li><li>CINNAMON</li>
-      </ul>
-    </div>
-  </div>
-  <a class="scroll" href="#news" aria-label="Scroll">SCROLL <i></i></a>
-</section>
-
-<div class="band light">
-<section id="news" class="sec wide">
-  <p class="slash">/// .install.module_highlight</p>
-  <div class="news">
-    <a class="ncard" href="#about"><span class="tagline">SYS_01 <em>v1.0.0</em></span><h3>What is MindwareOS</h3><p>An Arch Linux based distribution delivered as one installer script.</p><span class="more">Read &rarr;</span></a>
-    <a class="ncard" href="#how"><span class="tagline">SYS_02 <em>8 stages</em></span><h3>From blank disk to desktop</h3><p>Pre-flight, partitioning, drivers, desktop, GRUB. Every step logged.</p><span class="more">Read &rarr;</span></a>
-    <a class="ncard" href="#privacy"><span class="tagline">SYS_03 <em>privacy</em></span><h3>No telemetry in the installer</h3><p>No vendor account, no analytics service, opt-in extras only.</p><span class="more">Read &rarr;</span></a>
-    <a class="ncard" href="#mind"><span class="tagline">SYS_04 <em>cli</em></span><h3>Meet the mind command</h3><p>A friendly wrapper over pacman and yay for everyday package work.</p><span class="more">Read &rarr;</span></a>
-  </div>
-</section>
-</div>
-
-<section class="welcome band dark">
-  <div class="sec wide">
-    <p class="slash">/// WELCOME</p>
-    <h2 class="big">WELCOME TO THE <span>DARK TERMINAL</span></h2>
-    <p class="sec-sub">Arch gives you full control, but installing it by hand is a maze. Mainstream systems hide telemetry and accounts you never chose. MindwareOS takes the middle road: Arch's minimalism, a guided installer, and nothing you can't read.</p>
-    <div class="tiles">
-      <a class="tile" href="#about"><b>01</b><h3>The idea</h3><span class="more">Learn more &rarr;</span></a>
-      <a class="tile" href="#how"><b>02</b><h3>How it works</h3><span class="more">Learn more &rarr;</span></a>
-      <a class="tile" href="#features"><b>03</b><h3>Features</h3><span class="more">Learn more &rarr;</span></a>
-      <a class="tile" href="#use"><b>04</b><h3>How to use</h3><span class="more">Learn more &rarr;</span></a>
-    </div>
-  </div>
-</section>
-
-<div class="ticker" aria-hidden="true">
-  <div class="ticker-track">
-    <span>UEFI + BIOS</span><span>EXT4 / BTRFS</span><span>8 DESKTOP OPTIONS</span><span>GPU + CPU DETECTION</span><span>NO TELEMETRY IN INSTALLER</span><span>ONE FILE, FULLY AUDITABLE</span><span>THE mind CLI</span><span>OPT-IN EXTRAS</span>
-    <span>UEFI + BIOS</span><span>EXT4 / BTRFS</span><span>8 DESKTOP OPTIONS</span><span>GPU + CPU DETECTION</span><span>NO TELEMETRY IN INSTALLER</span><span>ONE FILE, FULLY AUDITABLE</span><span>THE mind CLI</span><span>OPT-IN EXTRAS</span>
-  </div>
-</div>
-
-<div class="band dark">
-<section class="sec wide demo">
-  <p class="slash">/// .live.preview</p>
-  <div class="term" aria-label="Installer preview">
-    <div class="term-bar"><i></i><i></i><i></i><span>root@archiso ~</span></div>
-    <pre id="term-out"></pre>
-  </div>
-</section>
-</div>
-
-<div class="band light">
-<section id="about" class="sec">
-  <p class="slash">/// 01</p><h2 class="big">WHAT IS <span>MINDWAREOS</span></h2>
-  <div class="cols">
-    <div class="panel">
-      <h3>WHAT</h3>
-      <p>MindwareOS is a custom, Arch Linux based distribution delivered as one installer script that you run from the Arch live environment.</p>
-    </div>
-    <div class="panel">
-      <h3>WHY</h3>
-      <p>Arch gives full control but its manual setup is hard for newcomers. Mainstream systems bundle software, accounts and telemetry you never chose.</p>
-    </div>
-    <div class="panel">
-      <h3>WHAT IT SOLVES</h3>
-      <p>It removes the pain of installing Arch by hand, keeps Arch's minimalism, and stays transparent: every step is plain bash you can read.</p>
-    </div>
-  </div>
-</section>
-</div>
-
-<div class="band dark">
-<section id="how" class="sec">
-  <p class="slash">/// 02</p><h2 class="big">HOW IT <span>WORKS</span></h2>
-  <p class="sec-sub">The installer runs as a sequence of stages. Each one is announced on screen and logged to <code>/tmp/mindware-install.log</code>.</p>
-  <ol class="stages">
-    <li><b>PRE-FLIGHT</b><span>Detects UEFI or BIOS, checks internet and RAM, syncs the clock, refreshes mirrors.</span></li>
-    <li><b>DISK</b><span>Lists disks, warns before wiping, asks for ext4 or BTRFS and a swap size.</span></li>
-    <li><b>IDENTITY</b><span>Username, hostname, timezone and passwords.</span></li>
-    <li><b>DESKTOP</b><span>KDE Plasma, GNOME, XFCE, i3, Hyprland, MATE, Cinnamon or none.</span></li>
-    <li><b>HARDWARE</b><span>Finds NVIDIA, AMD or Intel graphics, VM guests and CPU microcode.</span></li>
-    <li><b>OPTIONAL</b><span>Audio, Bluetooth, AUR helper and printing, all opt-in.</span></li>
-    <li><b>PARTITION</b><span>GPT or MBR layout, formatting, BTRFS subvolumes, swap and mounts.</span></li>
-    <li><b>BASE + CHROOT</b><span>pacstrap, fstab, locale, users, branding, desktop, drivers and GRUB.</span></li>
-  </ol>
-</section>
-</div>
-
-<div class="band light">
-<section id="features" class="sec">
-  <p class="slash">/// 03</p><h2 class="big"><span>FEATURES</span></h2>
-  <div class="cards">
-    <article class="card"><h3>ONE-FILE INSTALLER</h3><p>No hidden stages or binary blobs. Read the whole thing before you run it.</p></article>
-    <article class="card"><h3>HARDWARE AWARE</h3><p>Only the GPU drivers, guest tools and microcode your machine needs.</p></article>
-    <article class="card"><h3>BTRFS READY</h3><p>Subvolumes <code>@</code>, <code>@home</code>, <code>@snapshots</code>, <code>@var_log</code> with zstd and noatime.</p></article>
-    <article class="card"><h3>8 DESKTOPS</h3><p>From full KDE to a bare TTY. You choose the visual destiny.</p></article>
-    <article class="card"><h3>THE mind CLI</h3><p>A friendly wrapper over pacman and yay. See the table below.</p></article>
-    <article class="card"><h3>BRANDED</h3><p>os-release, MOTD, shell prompt, neofetch, wallpaper and avatar, all generated locally.</p></article>
-  </div>
-
-  <h3 class="h3" id="mind">/// THE <span class="y">mind</span> COMMAND</h3>
-  <div class="table-wrap">
-  <table>
-    <thead><tr><th>Command</th><th>Runs</th></tr></thead>
-    <tbody>
-      <tr><td><code>mind install &lt;pkg&gt;</code></td><td><code>sudo pacman -S</code></td></tr>
-      <tr><td><code>mind remove &lt;pkg&gt;</code></td><td><code>sudo pacman -Rns</code></td></tr>
-      <tr><td><code>mind update</code></td><td><code>sudo pacman -Syu</code></td></tr>
-      <tr><td><code>mind search &lt;term&gt;</code></td><td><code>pacman -Ss</code></td></tr>
-      <tr><td><code>mind clean</code></td><td><code>sudo pacman -Sc</code></td></tr>
-      <tr><td><code>mind info</code></td><td><code>neofetch</code></td></tr>
-      <tr><td><code>mind aur &lt;pkg&gt;</code></td><td><code>yay -S</code> (if the AUR helper was installed)</td></tr>
-    </tbody>
-  </table>
-  </div>
-</section>
-</div>
-
-<div class="band dark">
-<section id="use" class="sec">
-  <p class="slash">/// 04</p><h2 class="big">HOW <span>TO USE</span></h2>
-  <p class="warn"><b>&#9888; WARNING:</b> the installer <b>wipes the whole disk you select</b>. Back up first, and try it in a virtual machine before real hardware.</p>
-
-  <div class="steps">
-    <div class="step"><div class="n">1</div><div class="body">
-      <h3>Boot the Arch live ISO</h3>
-      <p>Download the official Arch Linux ISO from archlinux.org, write it to a USB drive (or attach it to a VM) and boot it. Connect to the internet. Wired works out of the box; for Wi-Fi use <code>iwctl</code>.</p>
-    </div></div>
-
-    <div class="step"><div class="n">2</div><div class="body">
-      <h3>Get the script</h3>
-      <p>Download <code>install.sh</code> with the button above, or fetch it in the live shell:</p>
-      <div class="code"><button class="copy" data-copy="curl -fsSLO https://raw.githubusercontent.com/Kterone/MindwareOS/main/install.sh">COPY</button><pre>curl -fsSLO https://raw.githubusercontent.com/Kterone/MindwareOS/main/install.sh</pre></div>
-    </div></div>
-
-    <div class="step"><div class="n">3</div><div class="body">
-      <h3>Read it first</h3>
-      <p>It is plain bash. Skim it so you know exactly what it will do to your disk.</p>
-      <div class="code"><button class="copy" data-copy="less install.sh">COPY</button><pre>less install.sh</pre></div>
-    </div></div>
-
-    <div class="step"><div class="n">4</div><div class="body">
-      <h3>Run it as root</h3>
-      <p>The live ISO already gives you a root shell.</p>
-      <div class="code"><button class="copy" data-copy="bash install.sh">COPY</button><pre>bash install.sh</pre></div>
-    </div></div>
-
-    <div class="step"><div class="n">5</div><div class="body">
-      <h3>Answer the prompts</h3>
-      <p>Pick the target disk (for example <code>sda</code> or <code>nvme0n1</code>), confirm the wipe, choose ext4 or BTRFS, set swap, username, hostname, timezone and passwords, choose a desktop and any optional extras.</p>
-    </div></div>
-
-    <div class="step"><div class="n">6</div><div class="body">
-      <h3>Reboot and log in</h3>
-      <p>When the installer finishes, remove the USB and reboot. Then open a terminal and try:</p>
-      <div class="code"><button class="copy" data-copy="mind help">COPY</button><pre>mind help</pre></div>
-    </div></div>
-  </div>
-
-  <p class="note-small">Tip: avoid piping unverified scripts straight into a shell (<code>curl ... | bash</code>). Download, read, then run, as above.</p>
-</section>
-</div>
-
-<div class="band light">
-<section id="privacy" class="sec">
-  <p class="slash">/// 05</p><h2 class="big"><span>PRIVACY</span></h2>
-  <p class="sec-sub">Based on a review of the published installer source (the final ~150 lines could not be reviewed).</p>
-  <div class="cols">
-    <div class="panel"><h3>TELEMETRY</h3><p>The reviewed installer sets up no analytics, crash-reporting or usage-tracking service, and no vendor account.</p></div>
-    <div class="panel"><h3>DATA COLLECTION</h3><p>Nothing is sent anywhere. Your usernames and passwords stay on your machine; the install log lives in <code>/tmp</code>.</p></div>
-    <div class="panel"><h3>NETWORK CONTACTS</h3><p>archlinux.org (ping), NTP servers, Arch mirrors, and the AUR only if you opt in.</p></div>
-    <div class="panel"><h3>COOKIES</h3><p>The OS sets none. Browser cookies and telemetry follow Firefox defaults, since no hardened profile is applied yet.</p></div>
-  </div>
-  <div class="panel limits">
-    <h3>KNOWN LIMITS (v1.0.0)</h3>
-    <ul>
-      <li>No disk encryption (LUKS) offered in the reviewed part.</li>
-      <li>Passwords are handled in plaintext during install.</li>
-      <li>No firewall, DNS-over-TLS or MAC randomisation configured yet.</li>
-    </ul>
-  </div>
-</section>
-</div>
-
-<section id="get" class="getband">
-  <div class="sec wide gb">
-    <div>
-      <p class="slash">/// GET THE SCRIPT</p>
-      <h2 class="big">WAKE UP, <span>SAMURAI</span></h2>
-      <p class="sec-sub">One file. Read it, then run it. Download it directly or grab the whole repository as a zip.</p>
-    </div>
-    <div class="gb-cta">
-      <button class="btn btn-primary" id="dl-btn2" type="button">Download install.sh <i class="arr">&rarr;</i></button>
-      <a class="btn" href="https://github.com/Kterone/MindwareOS/archive/refs/heads/main.zip">Repo .zip <i class="arr">&rarr;</i></a>
-      <a class="btn btn-ghost" href="https://github.com/Kterone/MindwareOS" target="_blank" rel="noopener">View on GitHub <i class="arr">&rarr;</i></a>
-    </div>
-  </div>
-</section>
-
-<section class="builton">
-  <p class="slash">/// BUILT ON</p>
-  <ul><li>ARCH LINUX</li><li>GRUB</li><li>BTRFS</li><li>NETWORKMANAGER</li><li>PIPEWIRE</li><li>SYSTEMD</li></ul>
-</section>
-</main>
-
-<footer>
-  <div class="foot-top">
-    <a class="brand" href="#top"><span class="brand-mark">MW</span><span class="brand-t">MINDWARE<b>OS</b></span></a>
-    <ul class="soc"><li><a href="https://github.com/Kterone/MindwareOS" target="_blank" rel="noopener">GITHUB</a></li><li><a href="https://archlinux.org" target="_blank" rel="noopener">ARCH LINUX</a></li></ul>
-  </div>
-  <ul class="legal"><li><a href="#about">About</a></li><li><a href="#use">How to use</a></li><li><a href="#privacy">Privacy</a></li><li><a href="https://github.com/Kterone/MindwareOS" target="_blank" rel="noopener">Source</a></li></ul>
-  <p>&copy; 2026 MINDWAREOS &middot; Made by Kuljeet Singh &middot;.</p>
-</footer>
-
-<script src="script.js"></script>
-</body>
-</html>
+MWMINDWAREOS About 
+System ▾ 
+How it worksFeaturesThe mind CLI
+How to use Privacy GitHub Partner - Deepak Sharma Download 
+   /// MINDWARE.OPERATOR ONLINE 
+ID 0001SIGNAL 100% 
+/// ARCH-BASED · v1.0.0 · BUILT FOR THINKERS
+INSTALL THE
+MINDSET
+MindwareOS is a custom Arch Linux distribution with a single, readable installer script. Partitioning, drivers, desktop and branding, all in one file you can audit.
+Download install.sh → How to use → 
+    • UEFI
+    • BIOS
+    • EXT4
+    • BTRFS
+    • KDE
+    • GNOME
+    • XFCE
+    • I3WM
+    • HYPRLAND
+    • MATE
+    • CINNAMON 
+SCROLL 
+Project.Module loading 0%
+/// .install.module_highlight
+SYS_01 v1.0.0
+What is MindwareOS
+An Arch Linux based distribution delivered as one installer script.
+Read → SYS_02 8 stages
+From blank disk to desktop
+Pre-flight, partitioning, drivers, desktop, GRUB. Every step logged.
+Read → SYS_03 privacy
+No telemetry in the installer
+No vendor account, no analytics service, opt-in extras only.
+Read → SYS_04 cli
+Meet the mind command
+A friendly wrapper over pacman and yay for everyday package work.
+Read → 
+Project.Module loading 0%
+/// WELCOME
+WELCOME TO THE DARK TERMINAL
+Arch gives you full control, but installing it by hand is a maze. Mainstream systems hide telemetry and accounts you never chose. MindwareOS takes the middle road: Arch's minimalism, a guided installer, and nothing you can't read.
+01
+The idea
+Learn more → 02
+How it works
+Learn more → 03
+Features
+Learn more → 04
+How to use
+Learn more → 
+UEFI + BIOSEXT4 / BTRFS8 DESKTOP OPTIONSGPU + CPU DETECTIONNO TELEMETRY IN INSTALLERONE FILE, FULLY AUDITABLETHE mind CLIOPT-IN EXTRAS UEFI + BIOSEXT4 / BTRFS8 DESKTOP OPTIONSGPU + CPU DETECTIONNO TELEMETRY IN INSTALLERONE FILE, FULLY AUDITABLETHE mind CLIOPT-IN EXTRAS 
+/// .live.preview
+root@archiso ~
+Project.Module loading 0%
+/// 01
+WHAT IS MINDWAREOS
+WHAT
+MindwareOS is a custom, Arch Linux based distribution delivered as one installer script that you run from the Arch live environment.
+WHY
+Arch gives full control but its manual setup is hard for newcomers. Mainstream systems bundle software, accounts and telemetry you never chose.
+WHAT IT SOLVES
+It removes the pain of installing Arch by hand, keeps Arch's minimalism, and stays transparent: every step is plain bash you can read.
+Project.Module loading 0%
+/// 02
+HOW IT WORKS
+The installer runs as a sequence of stages. Each one is announced on screen and logged to /tmp/mindware-install.log.
+    1. PRE-FLIGHTDetects UEFI or BIOS, checks internet and RAM, syncs the clock, refreshes mirrors. 
+    2. DISKLists disks, warns before wiping, asks for ext4 or BTRFS and a swap size. 
+    3. IDENTITYUsername, hostname, timezone and passwords. 
+    4. DESKTOPKDE Plasma, GNOME, XFCE, i3, Hyprland, MATE, Cinnamon or none. 
+    5. HARDWAREFinds NVIDIA, AMD or Intel graphics, VM guests and CPU microcode. 
+    6. OPTIONALAudio, Bluetooth, AUR helper and printing, all opt-in. 
+    7. PARTITIONGPT or MBR layout, formatting, BTRFS subvolumes, swap and mounts. 
+    8. BASE + CHROOTpacstrap, fstab, locale, users, branding, desktop, drivers and GRUB. 
+Project.Module loading 0%
+/// 03
+FEATURES
+ONE-FILE INSTALLER
+No hidden stages or binary blobs. Read the whole thing before you run it.
+HARDWARE AWARE
+Only the GPU drivers, guest tools and microcode your machine needs.
+BTRFS READY
+Subvolumes @, @home, @snapshots, @var_log with zstd and noatime.
+8 DESKTOPS
+From full KDE to a bare TTY. You choose the visual destiny.
+THE mind CLI
+A friendly wrapper over pacman and yay. See the table below.
+BRANDED
+os-release, MOTD, shell prompt, neofetch, wallpaper and avatar, all generated locally.
+/// THE mind COMMAND
+Command	Runs
+mind install <pkg>	sudo pacman -S
+mind remove <pkg>	sudo pacman -Rns
+mind update	sudo pacman -Syu
+mind search <term>	pacman -Ss
+mind clean	sudo pacman -Sc
+mind info	neofetch
+mind aur <pkg>	yay -S (if the AUR helper was installed)
+Project.Module loading 0%
+/// 04
+HOW TO USE
+⚠ WARNING: the installer wipes the whole disk you select. Back up first, and try it in a virtual machine before real hardware.
+1
+Boot the Arch live ISO
+Download the official Arch Linux ISO from archlinux.org, write it to a USB drive (or attach it to a VM) and boot it. Connect to the internet. Wired works out of the box; for Wi-Fi use iwctl.
+2
+Get the script
+Download install.sh with the button above, or fetch it in the live shell:
+COPY
+curl -fsSLO https://raw.githubusercontent.com/Kterone/MindwareOS/main/install.sh
+3
+Read it first
+It is plain bash. Skim it so you know exactly what it will do to your disk.
+COPY
+less install.sh
+4
+Run it as root
+The live ISO already gives you a root shell.
+COPY
+bash install.sh
+5
+Answer the prompts
+Pick the target disk (for example sda or nvme0n1), confirm the wipe, choose ext4 or BTRFS, set swap, username, hostname, timezone and passwords, choose a desktop and any optional extras.
+6
+Reboot and log in
+When the installer finishes, remove the USB and reboot. Then open a terminal and try:
+COPY
+mind help
+Tip: avoid piping unverified scripts straight into a shell (curl ... | bash). Download, read, then run, as above.
+Project.Module loading 0%
+/// 05
+PRIVACY
+Based on a review of the published installer source (the final ~150 lines could not be reviewed).
+TELEMETRY
+The reviewed installer sets up no analytics, crash-reporting or usage-tracking service, and no vendor account.
+DATA COLLECTION
+Nothing is sent anywhere. Your usernames and passwords stay on your machine; the install log lives in /tmp.
+NETWORK CONTACTS
+archlinux.org (ping), NTP servers, Arch mirrors, and the AUR only if you opt in.
+COOKIES
+The OS sets none. Browser cookies and telemetry follow Firefox defaults, since no hardened profile is applied yet.
+KNOWN LIMITS (v1.0.0)
+    • No disk encryption (LUKS) offered in the reviewed part. 
+    • Passwords are handled in plaintext during install. 
+    • No firewall, DNS-over-TLS or MAC randomisation configured yet. 
+/// GET THE SCRIPT
+WAKE UP, SAMURAI
+One file. Read it, then run it. Download it directly or grab the whole repository as a zip.
+Download install.sh → Repo .zip → View on GitHub → 
+Project.Module loading 0%
+/// BUILT ON
+    • ARCH LINUX
+    • GRUB
+    • BTRFS
+    • NETWORKMANAGER
+    • PIPEWIRE
+    • SYSTEMD
+/// PARTNER MODULE
+PARTNER DEEPAK SHARMA
+Shree Lal Feeds, Gurdaspur, Punjab: a partner project shown below as a live page.
+PARTNER // DEEPAK SHARMA · SHREE LAL FEEDS Open in new tab ↗Close ✕
+ 
+MWMINDWAREOS 
+    • GITHUB
+    • ARCH LINUX
+    • About
+    • How to use
+    • Privacy
+    • Source
+© 2026 MINDWAREOS · Made by Kuljeet Singh · Independent fan-style design. Not affiliated with Arch Linux or CD PROJEKT RED.
