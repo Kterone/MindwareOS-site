@@ -83,4 +83,38 @@
 
   function burst(){}
 
+
+  /* ---------- Zig-zag loader percentages ---------- */
+  (function(){
+    var els=document.querySelectorAll('.zz');if(!els.length)return;
+    function run(z){
+      var b=z.querySelector('[data-pct]');if(!b||z._done)return;z._done=true;
+      if(reduce){b.textContent='100%';return;}
+      var p=0;(function t(){p+=Math.ceil(Math.random()*9);if(p>100)p=100;b.textContent=p+'%';if(p<100)setTimeout(t,60);})();
+    }
+    if('IntersectionObserver' in window){
+      var io2=new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting){run(e.target);io2.unobserve(e.target);}});},{threshold:.6});
+      els.forEach(function(z){io2.observe(z);});
+    } else els.forEach(run);
+  })();
+
+  /* ---------- Partner module (Deepak Sharma) ---------- */
+  (function(){
+    var box=document.getElementById('partner'),frame=document.getElementById('partner-frame'),close=document.getElementById('partner-close');
+    if(!box||!frame)return;
+    function open(scroll){
+      box.classList.add('open');
+      if(!frame.getAttribute('src'))frame.setAttribute('src',frame.getAttribute('data-src'));
+      if(scroll)setTimeout(function(){box.scrollIntoView({behavior:reduce?'auto':'smooth',block:'start'});},60);
+    }
+    document.querySelectorAll('[data-partner]').forEach(function(a){
+      a.addEventListener('click',function(e){e.preventDefault();open(true);});
+    });
+    if(close)close.addEventListener('click',function(){box.classList.remove('open');window.scrollTo({top:0,behavior:reduce?'auto':'smooth'});});
+    window.addEventListener('message',function(e){
+      if(e.source!==frame.contentWindow||!e.data||e.data.type!=='partner-height')return;
+      var h=Number(e.data.h);if(h>200&&h<20000)frame.style.height=h+'px';
+    });
+    if(location.hash==='#partner')open(true);
+  })();
 })();
